@@ -60,6 +60,9 @@
 
 						boids[i].dx += v1.x + v2.x + v3.x + b.x;
 						boids[i].dy += v1.y + v2.y + v3.y + b.y;
+
+						limit(i);
+
 						boids[i].x += boids[i].dx;
 						boids[i].y += boids[i].dy;
 					}
@@ -155,6 +158,14 @@
 					}
 
 					return v;
+				}
+
+				// This should limit the max speed of the boids
+				function limit(b) {
+					if (Math.sqrt(Math.pow(boids[b].dx,2) + Math.pow(boids[b].dy,2)) > 5) {
+						boids[b].dx = (boids[b].dx / Math.sqrt(Math.pow(boids[b].dx,2) + Math.pow(boids[b].dy,2))) * 5
+						boids[b].dy = (boids[b].dy / Math.sqrt(Math.pow(boids[b].dx,2) + Math.pow(boids[b].dy,2))) * 5;
+					}
 				}
 
 				// Boid object
