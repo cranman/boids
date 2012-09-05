@@ -85,6 +85,26 @@ loop();
 					return v;
 				}
 
+				function rule2(b) {
+					var c = {
+						x : 0,
+						y : 0
+					};
+
+					for (var i = 0; i < boids.length; i++) {
+						if (b == i) {
+							continue;
+						}
+
+						if (Math.sqrt(Math.pow(boids[i].x + boids[b].x,2) + Math.pow(boids[i].y + boids[b].y,2)) < 100) {
+							c.x -= (boids[b].x - boids[i].x);
+							c.y -= (boids[b].y - boids[i].y);
+						}
+					}
+
+					return c;
+				}
+
 				// Boid object
 				function Boid(x, y, dx, dy) {
 					this.x = x;
