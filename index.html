@@ -53,11 +53,36 @@ loop();
 //						v2 = rule2(b);
 //						v3 = rule3(b);
 //
-//						boids[i].dx += v1.dx + v2.dx + v3.dx;
-//						boids[i].dy += v1.dy + v2.dy = v3.dy;
+//						boids[i].dx += v1.x + v2.dx + v3.dx;
+//						boids[i].dy += v1.y + v2.dy = v3.dy;
 //						boids[i].x += boids[i].x + boids[i].dx;
 //						boids[i].y += boids[i].y + boids[i].dy;
 					}
+				}
+
+				// Boids try to fly towards the centre of mass of neighbouring boids
+				function rule1(b) {
+					var v = { 
+						x : 0, 
+						y : 0
+					};
+
+					for (var i = 0; i < boids.length; i++) {
+						if (b == i ) {
+							continue;
+						}
+
+						v.x += boids[i].x;
+						v.y += boids[i].y;
+					}
+
+					v.x /= boids.length - 1;
+					v.y /= boids.length - 1;
+
+					v.x = (v.x - boids[b].x)/100;
+					v.y = (v.y - boids[b].y)/100;
+
+					return v;
 				}
 
 				// Boid object
