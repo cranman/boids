@@ -7,6 +7,59 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
+				var boids = [];
+
+				var ctx;
+
+				// Initialise positions of boids
+				function init() {
+					ctx = $('#canvas')[0].getContext('2d');
+
+					makeBoids(10);
+
+//					setInterval(loop, 10);
+loop();
+				}
+
+				function makeBoids(num) {
+					for(var i = 0; i < num; i++) {
+						var x = Math.floor(Math.random()*600);
+						var y = Math.floor(Math.random()*600);
+						var dx = Math.floor(Math.random()*10 - 5);
+						var dy = Math.floor(Math.random()*10 - 5);
+
+						boids.push(new Boid(x, y, dx, dy));
+					}
+				}
+
+				// Main loop
+				function loop() {
+					draw();
+					// update();
+				}
+
+				function draw() {
+					for (var b in boids) {
+						boids[b].draw();
+					}
+				}
+
+				// Boid object
+				function Boid(x, y, dx, dy) {
+					this.x = x;
+					this.y = y;
+					this.dx = dx;
+					this.dy = dy;
+				}
+
+				Boid.prototype.draw = function() {
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, 5, 0, Math.PI*2);
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				init();
 			});
 		</script>
 	</head>
