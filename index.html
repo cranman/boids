@@ -56,8 +56,10 @@
 						v2 = rule2(i);
 						v3 = rule3(i);
 
-						boids[i].dx += v1.x + v2.x + v3.x;
-						boids[i].dy += v1.y + v2.y + v3.y;
+						b = boundary(i);
+
+						boids[i].dx += v1.x + v2.x + v3.x + b.x;
+						boids[i].dy += v1.y + v2.y + v3.y + b.y;
 						boids[i].x += boids[i].dx;
 						boids[i].y += boids[i].dy;
 					}
@@ -132,6 +134,27 @@
 					p.y = (p.y - boids[b].dy)/8;
 
 					return p;
+				}
+
+				function boundary(b) {
+					var v = {
+						x : 0,
+						y : 0
+					};
+
+					if (boids[b].x < 20) {
+						v.x = 10;
+					} else if (boids[b].x > 580) {
+						v.x = -10;
+					}
+
+					if (boids[b].y < 20) {
+						v.x = 10;
+					} else if (boids[b].y > 580) {
+						v.y = -10;
+					}
+
+					return v;
 				}
 
 				// Boid object
