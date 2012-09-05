@@ -33,8 +33,13 @@
 
 				// Main loop
 				function loop() {
+					clear();
 					draw();
 					update();
+				}
+
+				function clear() {
+					ctx.clearRect(0, 0, 600, 600);
 				}
 
 				function draw() {
