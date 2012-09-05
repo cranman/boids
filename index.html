@@ -35,12 +35,28 @@ loop();
 				// Main loop
 				function loop() {
 					draw();
-					// update();
+					update();
 				}
 
 				function draw() {
 					for (var i = 0; i < boids.length; i++) {
 						boids[i].draw();
+					}
+				}
+
+				function update() {
+					var v1, v2, v3;
+
+					for (var i = 0; i < boids.length; i++) {
+
+//						v1 = rule1(b);
+//						v2 = rule2(b);
+//						v3 = rule3(b);
+//
+//						boids[i].dx += v1.dx + v2.dx + v3.dx;
+//						boids[i].dy += v1.dy + v2.dy = v3.dy;
+//						boids[i].x += boids[i].x + boids[i].dx;
+//						boids[i].y += boids[i].y + boids[i].dy;
 					}
 				}
 
