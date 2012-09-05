@@ -106,6 +106,31 @@ loop();
 					return c;
 				}
 
+				// Boids try to match velocity with near boids
+				function rule3(b) {
+					var p = {
+						x : 0,
+						y : 0
+					};
+
+					for (var i = 0; i < boids.length; i++) {
+						if (b == i) {
+							continue;
+						}
+
+						p.x += boids[i].dx;
+						p.y += boids[i].dy;
+					}
+
+					p.x /= boids.length - 1;
+					p.y /= boids.length - 1;
+
+					p.x = (p.x - boids[b].dx)/8
+					p.y = (p.y - boids[b].dy)/8;
+
+					return p;
+				}
+
 				// Boid object
 				function Boid(x, y, dx, dy) {
 					this.x = x;
