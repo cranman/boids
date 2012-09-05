@@ -17,8 +17,7 @@
 
 					makeBoids(10);
 
-//					setInterval(loop, 10);
-loop();
+					setInterval(loop, 10);
 				}
 
 				function makeBoids(num) {
@@ -48,15 +47,14 @@ loop();
 					var v1, v2, v3;
 
 					for (var i = 0; i < boids.length; i++) {
+						v1 = rule1(i);
+						v2 = rule2(i);
+						v3 = rule3(i);
 
-//						v1 = rule1(b);
-//						v2 = rule2(b);
-//						v3 = rule3(b);
-//
-//						boids[i].dx += v1.x + v2.dx + v3.dx;
-//						boids[i].dy += v1.y + v2.dy = v3.dy;
-//						boids[i].x += boids[i].x + boids[i].dx;
-//						boids[i].y += boids[i].y + boids[i].dy;
+						boids[i].dx += v1.x + v2.x + v3.x;
+						boids[i].dy += v1.y + v2.y + v3.y;
+						boids[i].x += boids[i].x + boids[i].dx;
+						boids[i].y += boids[i].y + boids[i].dy;
 					}
 				}
 
