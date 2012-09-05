@@ -100,7 +100,7 @@
 							continue;
 						}
 
-						if (Math.sqrt(Math.pow(boids[i].x - boids[b].x,2) + Math.pow(boids[i].y - boids[b].y,2)) < 100) {
+						if (Math.sqrt(Math.pow(boids[i].x - boids[b].x,2) + Math.pow(boids[i].y - boids[b].y,2)) < 5) {
 							c.x -= (boids[i].x - boids[b].x);
 							c.y -= (boids[i].y - boids[b].y);
 						}
