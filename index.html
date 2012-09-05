@@ -53,8 +53,8 @@
 
 						boids[i].dx += v1.x + v2.x + v3.x;
 						boids[i].dy += v1.y + v2.y + v3.y;
-						boids[i].x += boids[i].x + boids[i].dx;
-						boids[i].y += boids[i].y + boids[i].dy;
+						boids[i].x += boids[i].dx;
+						boids[i].y += boids[i].dy;
 					}
 				}
 
